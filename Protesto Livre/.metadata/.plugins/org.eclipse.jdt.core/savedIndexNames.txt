@@ -1,0 +1,7 @@
+INDEX VERSION 1.126+C:\Users\Thiago\Dropbox\Protesto Livre\.metadata\.plugins\org.eclipse.jdt.core
+832008084.index
+2226098187.index
+3497207671.index
+1284074322.index
+3674238192.index
+2666526522.index

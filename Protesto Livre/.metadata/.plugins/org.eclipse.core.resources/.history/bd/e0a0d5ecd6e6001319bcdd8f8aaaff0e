@@ -1,0 +1,136 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C2F7FF"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.sp.protestolivre.Tela05$PlaceholderFragment" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Preencha com os dados da pessoa a quem se destina o documento" />
+
+    <EditText
+        android:id="@+id/nome"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="16dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Nome Completo"
+        android:inputType="textPersonName" >
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/endereco"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/nome"
+        android:layout_below="@+id/nome"
+        android:layout_marginTop="17dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Endereco" />
+
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignRight="@+id/nome"
+        android:layout_alignTop="@+id/endereco"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/endereco"
+        android:background="#ffffff"
+        android:entries="@array/estados"
+        android:spinnerMode="dropdown" />
+
+    <EditText
+        android:id="@+id/cidade"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignRight="@+id/endereco"
+        android:layout_below="@+id/endereco"
+        android:layout_marginRight="74dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Cidade" />
+
+    <EditText
+        android:id="@+id/profissao"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignBaseline="@+id/cidade"
+        android:layout_alignBottom="@+id/cidade"
+        android:layout_alignLeft="@+id/cidade"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="158dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Profissão" />
+
+    <EditText
+        android:id="@+id/rg"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/cidade"
+        android:layout_alignRight="@+id/cidade"
+        android:layout_below="@+id/cidade"
+        android:layout_marginRight="62dp"
+        android:layout_marginTop="22dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="RG" />
+
+    <EditText
+        android:id="@+id/cpf"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignBaseline="@+id/rg"
+        android:layout_alignBottom="@+id/rg"
+        android:layout_alignLeft="@+id/rg"
+        android:layout_alignRight="@+id/endereco"
+        android:layout_marginLeft="96dp"
+        android:layout_marginRight="30dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="CPF" />
+
+    <EditText
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignBaseline="@+id/rg"
+        android:layout_alignBottom="@+id/rg"
+        android:layout_alignLeft="@+id/profissao"
+        android:layout_alignRight="@+id/profissao"
+        android:layout_marginLeft="42dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Título de Eleitor" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/rg"
+        android:layout_below="@+id/rg"
+        android:layout_marginTop="22dp"
+        android:onClick="createPdf"
+        android:src="@drawable/gerar" />
+
+</RelativeLayout>

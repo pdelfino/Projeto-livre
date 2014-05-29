@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C2F7FF"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.sp.protestolivre.Tela05$PlaceholderFragment" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Preencha com os dados da pessoa a quem se destina o documento" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/Nome"
+        android:layout_alignTop="@+id/Endereco"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="102dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:entries="@array/estados"
+        android:spinnerMode="dropdown" />
+
+    <EditText
+        android:id="@+id/Endereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spinner1"
+        android:layout_below="@+id/Nome"
+        android:layout_marginTop="61dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Endereco" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/Nome"
+        android:layout_width="wrap_content"
+        android:layout_height="40"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="16dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Nome Completo"
+        android:inputType="textPersonName" />
+
+</RelativeLayout>
