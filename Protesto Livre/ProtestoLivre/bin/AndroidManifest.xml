@@ -12,7 +12,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:permission="android.permission.WRITE_EXTERNAL_STORAGE">
+        android:theme="@style/AppTheme"  
+        android:testOnly="false">
         <activity
             android:name="br.sp.protestolivre.TelaInicial"
             android:label="@string/app_name" >

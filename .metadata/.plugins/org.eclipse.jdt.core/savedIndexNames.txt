@@ -1,0 +1,7 @@
+INDEX VERSION 1.126+C:\Users\Thiago\Documents\GitHub\Projeto-livre\.metadata\.plugins\org.eclipse.jdt.core
+1595850974.index
+3518436101.index
+3515282563.index
+2134547891.index
+569084050.index
+273112501.index
