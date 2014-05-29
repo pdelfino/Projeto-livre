@@ -4,8 +4,8 @@
     <string name="app_name">Protesto Livre</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_tela04">Tela04</string>
-    <string name="title_activity_tela05">Tela05</string>
+    <string name="title_activity_tela04">Protesto Livre</string>
+    <string name="title_activity_tela05">Habeas Corpus Preventivo</string>
 	<string-array name="estados">
         <item>AC</item>
 		<item>AL</item>

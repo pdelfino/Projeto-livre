@@ -16,16 +16,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="87dp"
-        android:onClick="onClick"
+        android:onClick="Preventivo"
         android:src="@drawable/btnhabprev" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_centerVertical="true"
-        android:src="@drawable/btnhablib" />
 
     <TextView
         android:id="@+id/textView1"
@@ -35,5 +27,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
         android:text="Selecione o Tipo de Habeas Corpus" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_below="@+id/imageView1"
+        android:onClick="Liberatorio"
+        android:src="@drawable/btnhablib" />
 
 </RelativeLayout>

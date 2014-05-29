@@ -1,29 +1,35 @@
 package br.sp.protestolivre;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.*;
-import android.os.Build;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import android.app.DialogFragment;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class Tela05 extends ActionBarActivity {
+public class Tela05 extends ActionBarActivity implements NoticeDialogFragment.NoticeDialogListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +62,7 @@ public class Tela05 extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	private String path;
 	
 	public void createPDF(View v){
 		String nome = ((EditText)findViewById(R.id.nome)).getText().toString();
@@ -90,13 +97,15 @@ public class Tela05 extends ActionBarActivity {
 		Font bold = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.BOLD);
 		Font italic = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.ITALIC);
 		Font bitalic = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.BOLDITALIC);
-		String path = Environment.getExternalStorageDirectory().getPath() + "/ProtestoLivre";
+		
 		try {
-			File p = new File(path);
 			
+			  String path = Environment.getExternalStorageDirectory().getPath() + "/ProtestoLivre";
+			  File p = new File(path);
 			  File f = new File(p,nome.replaceAll(" ","")+data+".pdf");
-			  Toast toast = Toast.makeText(getApplicationContext(), "Documento salvo em: " + f.toString(), 15);
-				toast.show();
+			  if (!p.isDirectory())
+				  p.mkdir();
+			  this.path = f.getAbsolutePath();
 		      Document doc = new Document();
 		      PdfWriter.getInstance(doc, new FileOutputStream(f));
 		      doc.open();
@@ -311,14 +320,20 @@ public class Tela05 extends ActionBarActivity {
 		      doc.close();
 		      
 		} catch (Exception e) {
-			Toast toast = Toast.makeText(getApplicationContext(),e.toString(), 10);
+			Toast toast = Toast.makeText(getApplicationContext(),e.toString(), Toast.LENGTH_SHORT);
 			toast.show(); 
 		}
 		
-		finish();
-		
+		showNoticeDialog();
 		
 	}
+	
+	public void showNoticeDialog() {
+	        // Create an instance of the dialog fragment and show it
+	        DialogFragment dialog = new NoticeDialogFragment();
+	        dialog.show(getFragmentManager(), "NoticeDialogFragment");
+	}
+	
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
@@ -334,6 +349,21 @@ public class Tela05 extends ActionBarActivity {
 					container, false);
 			return rootView;
 		}
+	}
+
+	@Override
+	public void onDialogPositiveClick(DialogFragment dialog) {
+		 Intent intent = new Intent();
+	 	 intent.setAction(android.content.Intent.ACTION_VIEW);
+	 	 File file = new File(this.path);
+	 	 intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+	 	 startActivity(intent);
+	 	 finish();
+	}
+
+	@Override
+	public void onDialogNegativeClick(DialogFragment dialog) {
+		finish();
 	}
 
 }

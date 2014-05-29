@@ -1,0 +1,382 @@
+package br.sp.protestolivre;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfWriter;
+
+public class Tela05 extends ActionBarActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_tela05);
+
+		if (savedInstanceState == null) {
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.container, new PlaceholderFragment()).commit();
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.tela05, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	
+	public void createPDF(View v){
+		String nome = ((EditText)findViewById(R.id.nome)).getText().toString();
+		String endereco = ((EditText)findViewById(R.id.endereco)).getText().toString();
+		String cidade = ((EditText)findViewById(R.id.cidade)).getText().toString();
+		String profissao = ((EditText)findViewById(R.id.profissao)).getText().toString();
+		String rg = ((EditText)findViewById(R.id.rg)).getText().toString();
+		String cpf = ((EditText)findViewById(R.id.cpf)).getText().toString();
+		String titulo = ((EditText)findViewById(R.id.titulo)).getText().toString();
+		
+//		if (nome == "" || endereco == "" || cidade == "" || profissao == "" ||rg == "" || cpf == "" || titulo == ""){
+//			Toast toast = Toast.makeText(getApplicationContext(), "Todos os campos devem ser preenchidos", 10); 
+//			return;
+//		}
+		
+		
+		int sigla = ((Spinner)findViewById(R.id.spinner1)).getSelectedItemPosition();
+		String[] listEstados = {"Acre","Alagoas","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo","Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba","Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins"};
+		String estado = listEstados[sigla];
+		
+		String text1 = nome +", brasileiro, residente e domiciliado na "+endereco+", "+profissao+", portador da C.I nº "+rg+", inscrito no CPF sob o nº "+cpf+", cidadão registrado sob o título de eleitor nº "+titulo+", vem, EM CAUSA PRÓPRIA, impetrar a presente ORDEM DE HABEAS CORPUS PREVENTIVO COM PEDIDO DE LIMINAR apontando como autoridade coatora a Polícia Militar do Estado de "+ estado+", pelos fatos e fundamentos que passa a expor:";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+		String data = sdf.format(new Date());
+		
+		Calendar c = Calendar.getInstance();
+		String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+		String[] meses = {"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
+		String mes = meses[c.get(Calendar.MONTH)];
+		String ano = String.valueOf(c.get(Calendar.YEAR));
+		
+		Font text = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL);
+		Font bold = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.BOLD);
+		Font italic = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.ITALIC);
+		Font bitalic = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.BOLDITALIC);
+		String path = Environment.getExternalStorageDirectory().getPath() + "/ProtestoLivre";
+		File p = new File(path);
+		File f = new File(p,nome.replaceAll(" ","")+data+".pdf");
+		f.mkdirs();
+		try {
+			
+			  
+		      Document doc = new Document();
+		      PdfWriter.getInstance(doc, new FileOutputStream(f));
+		      doc.open();
+		      doc.add(new Paragraph("EXMO. SR. JUIZ DE DIREITO DO TRIBUNAL DE JUSTIÇA DO ESTADO DE "+estado.toUpperCase(), text));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(text1,text));
+		      doc.newPage();
+		      Phrase phrase = new Phrase();
+		      phrase.add(new Chunk("     O Impetrante deseja ", text));
+		      phrase.add(new Chunk("exercer seus direitos fundamentais relativos à liberdade de manifestação do pensamento ", bold));
+		      phrase.add(new Chunk("(art. 5º, IV, CR/88); ",text));
+		      phrase.add(new Chunk("liberdade de locomoção no território nacional", bold));
+		      phrase.add(new Chunk(" (art. 5º, XV, CR/88), ",text));
+		      phrase.add(new Chunk("liberdade de reunião para fins pacíficos",bold));
+		      phrase.add(new Chunk(" (art. 5º, XVI, CR/88), contudo, teme ter sua liberdade cerceada face aos abusos cometidos pelas forças de segurança Estadual, sobretudo sua polícia Militar, ao reprimir as manifestações ocorridas nos últimos tempos.",text));
+		      Paragraph par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      doc.add(new Paragraph("     Há que ser ressaltado que nos autos de cautelar inominada interposta pelo Estado de Minas Gerais contra o SINDICATO DOS SERVIDORES DA POLICIA CIVIL DO ESTADO DE MINAS GERAIS – SINDPOL, de autos n° 0411481-04.2013.8.13.0000, foi deferida medida liminar para:",text));
+		      phrase = new Phrase();
+		      phrase.add(new Chunk("“1) ",text));
+		      phrase.add(new Chunk("determinar que as rés se abstenham de praticar os atos enunciados em seus pronunciamentos",bold));
+		      phrase.add(new Chunk(", especialmente os de embargar as vias de acesso ao Mineirão e de todo o seu entorno, bem assim às demais regiões e logradouros públicos situados no território estadual; 2) ",text));
+		      phrase.add(new Chunk("determinar que esta proibição se estenda a todo e qualquer manifestante ",bold));
+		      phrase.add(new Chunk("que porventura tente impedir o normal trânsito de pessoas e veículos, bem assim o regular funcionamento dos serviços públicos estaduais, apresentação de espetáculos e de demais eventos esportivos e culturais e, 3) ",text));
+		      phrase.add(new Chunk("fixar multa diária de R$500.000,00",bold));
+		      phrase.add(new Chunk(" (quinhentos mil reais) para cada entidade sindical, em caso de descumprimento da ordem, e a todas e ",text));
+		      phrase.add(new Chunk("quaisquer outras entidades que aderirem à manifestação, ",bold));
+		      phrase.add(new Chunk("ordenando, desde logo, a utilização imediata do sistema de bloqueio on line (BACENJUD) em caso de descumprimento.”",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      par.setIndentationLeft(150);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     Tal proibição de manifestações dá a entender que estariam vetadas toda e qualquer manifestação no território de Minas Gerais, o que, por óbvio, ",text));
+		      phrase.add(new Chunk("rasga o texto expresso da Constituição",bold));
+		      phrase.add(new Chunk("em clara e evidente afronta aos direitos fundamentais assegurados pela Lei Maior da República Federativa do Brasil. Assim, para cumprir essa absurda determinação, as forças públicas de segurança vêm abusando da força através de disparos à esmo de armas de fogo com balas de borracha; uso de gás lacrimogêneo, cassetetes e outros instrumentos capazes de ferir e/ou matar manifestantes; bem como uso arbitrário de prisões de manifestantes como forma de acabar com os protestos.",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     Felizmente o ",text));
+		      phrase.add(new Chunk("Supremo Tribunal Federal reconheceu o absurdo da decisão",bold));
+		      phrase.add(new Chunk(" desse Egrégio Tribunal de Justiça do Estado de Minas Gerais e, no julgamento de pedido de liminar feito na reclamação nº 15887, o Ministro Luiz Fux cassou a decisão no dia 19 de junho de 2013, assim decidindo: “Ex positis, concedo a liminar, cassando a decisão reclamada, nos termos do art. 21, V, do RISTF, porquanto consideradas legítimas as manifestações populares realizadas sem vandalismo, preservado o poder de polícia estatal na repressão de eventuais abusos.”",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     Oportuno ressaltar decisão do ",text));
+		      phrase.add(new Chunk("Superior Tribunal de Justiça",bold));
+		      phrase.add(new Chunk(" sobre caso de materialidade semelhante. O Habeas Corpus Preventivo foi impetrado em favor de grupo manifestante contra ",text));
+		      phrase.add(new Chunk("decisão absurda da justiça federal",bold));
+		      phrase.add(new Chunk(" que permitia o uso da força policial em manifestações ordeiras e legais no Município de Natal/RN. Decidiu o ministro Herman Benjamin no sentido de que “o Remédio heroico é cabível em situações de que resulte possibilidade de ofensa ao “",text));
+		      phrase.add(new Chunk("jus manendi, ambulandi, eundi ultro citroque",italic));
+		      phrase.add(new Chunk(" [direito de permanecer, indo e voltando]”” (STJ/HABEAS CORPUS Nº 272.607 - RN).",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     Obviamente, ",text));
+		      phrase.add(new Chunk("não cabe ao poder judiciário determinar a utilização da ",bold));
+		      phrase.add(new Chunk("coertio",bitalic));
+		      phrase.add(new Chunk(" pelo Estado",bold));
+		      phrase.add(new Chunk(", sobretudo contra expressões legítimas do povo, tão importantes para a construção de uma nação democrática e igualitária. Por sorte, neste caso a via estreita do Habeas Corpus serviu para salvaguardar os direitos de livre reunião e manifestação, tal como se pede no presente ",text));
+		      phrase.add(new Chunk(" writ.",italic));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     Novamente, frise-se que se trata de manifestações ordeiras e pacíficas, sendo certo que o impetrante não apoia e nem participa de qualquer forma de atos de vandalismo e criminosos que possam ter sido cometidos por grupos isolados e que se aproveitam da aglomeração de pessoas dos manifestos para cometer seus atos criminosos. Assim, o impetrante e os demais manifestantes desejam apenas ",text));
+		      phrase.add(new Chunk("defender publicamente seu pensamento",bold));
+		      phrase.add(new Chunk(", manifestando suas insatisfações de forma a propor mudanças ao País – direito esse que, em tempos de paz ",text));
+		      phrase.add(new Chunk("não podem ser suprimidos em nenhuma hipótese",bold));
+		      phrase.add(new Chunk(" ou circunstância. Frise-se que as exceções constitucionais dizem respeito ao Estado de Sítio e de Defesa, que não abrangem a realização de nenhum dos eventos esportivos dos quais o Brasil é sede.",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     Liberdade! É o que se requer neste ",text));
+		      phrase.add(new Chunk("writ",italic));
+		      phrase.add(new Chunk(", que seja assegurada a liberdade do Impetrante de se manifestar de ",text));
+		      phrase.add(new Chunk("forma pacífica",bold));
+		      phrase.add(new Chunk(" sem que tenha sua liberdade cerceada desnecessariamente pelas forças de segurança pública. Também requer que as forças de segurança pública garantam a manifestação pacífica e a segurança de todos os envolvidos no protesto, sem violência.",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     Insta salientar que em alguns Estados da Federação há relatos de prisões por ",text));
+		      phrase.add(new Chunk("uso de máscaras",bold));
+		      phrase.add(new Chunk(" e até por ",text));
+		      phrase.add(new Chunk("porte de vinagre",bold));
+		      phrase.add(new Chunk(" de uso doméstico. Ora, Excelentíssimo Juiz de Direito, nenhuma dessas substâncias é proibida, não havendo motivos para prisões por seu porte durante manifestações.",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     A Constituição da República ",text));
+		      phrase.add(new Chunk("garante o direito à liberdade",bold));
+		      phrase.add(new Chunk(", sendo a prisão a exceção do ordenamento constitucional, que, nos termos do art. 5º, LIV, da CR/88, necessita do devido processo legal. Assim, a prisão por participar dos manifestos ou para averiguações, como tem sido recorrente em manifestações pelo País, é ",text));
+		      phrase.add(new Chunk("rente em manifestações pelo País, é desprovida de legitimidade constitucional",bold));
+		      phrase.add(new Chunk(" e deve ser combatida por esse E. Tribunal de Justiça.",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     Ademais, o Pacto Interamericano de Direitos Humanos de São José da Costa Rica, que conforme decidiu o Supremo Tribunal Federal, possui ",text));
+		      phrase.add(new Chunk("hierarquia supralegal",bold));
+		      phrase.add(new Chunk(" e ingressou em nosso ordenamento interno pelo Decreto 678/1992. O diploma assegura o direito à liberdade e segurança pessoal (art. 7º, 1), à não privação da liberdade física, salvo condições previamente especificadas (art. 7º, 2) e o direito à não detenção arbitrária (art. 7º, 3). Assegura ainda a liberdade do pensamento (art. 13 e seus respectivos incisos).",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     O que está em julgamento não é apenas o ",text));
+		      phrase.add(new Chunk("direito de manifestar",bold));
+		      phrase.add(new Chunk(", é o ",text));
+		      phrase.add(new Chunk("direito à liberdade",bold));
+		      phrase.add(new Chunk(" do impetrante e indiretamente, decorrentes do próprio Estado Democrático de Direito e que necessitam ser reafirmados por esse Egrégio Tribunal de Justiça.",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      par = new Paragraph(new Phrase("     Sobre a liberdade de manifestação do pensamento, decidiu o Supremo Tribunal Federal:",text));
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      par = new Paragraph(new Phrase("“\"Decreto 20.098/1999 do Distrito Federal. Liberdade de reunião e de manifestação pública. Limitações. Ofensa ao art. 5º, XVI, da CF. A liberdade de reunião e de associação para fins lícitos constitui uma das mais importantes conquistas da civilização, enquanto fundamento das modernas democracias políticas. A restrição ao direito de reunião estabelecida pelo Decreto distrital 20.098/1999, a toda evidência, mostra-se inadequada, desnecessária e desproporcional quando confrontada com a vontade da Constituição (Wille zur Verfassung).\" (ADI 1.969, Rel. Min. Ricardo Lewandowski, julgamento em 28-6-2007, Plenário, DJ de 31-8-2007.)”",text));
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      par.setIndentationLeft(150);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("     Assim sendo, resta demonstrado que o impetrante tem direito a não ser preso, salvo flagrante delito ou ordem judicial fundamentada, durante as manifestações realizadas e a serem realizadas. Deve a ordem ser concedida para assegurar o óbvio ululante direito à liberdade pessoal e à manifestação do pensamento do impetrante, servindo a decisão deste writ como um salvo conduto para as possíveis violações aos direitos supracitados.",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("DOS PEDIDOS",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("Pelo exposto pede:",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("a)     LIMINARMENTE a concessão da ordem para assegurar ao impetrante o direito de participar das manifestações que ocorrerem antes e durante o período da Copa do Mundo sem ser preso, ressalvadas as hipóteses constitucionais, expedindo o competente salvo conduto;",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("b)     LIMINARMENTE a concessão da ordem para assegurar ao impetrante o direito de portar vinagre antes e durante as manifestações que ocorrerem durante o período da Copa do Mundo sem ser preso, ressalvadas as hipóteses constitucionais, expedindo o competente salvo conduto;",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("b)     LIMINARMENTE a concessão da ordem para assegurar ao impetrante o direito de portar vinagre antes e durante as manifestações que ocorrerem durante o período da Copa do Mundo sem ser preso, ressalvadas as hipóteses constitucionais, expedindo o competente salvo conduto;",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("c)     LIMINARMENTE a concessão da ordem para assegurar ao impetrante o direito de usar máscaras alegóricas durante as manifestações que ocorrerem antes e durante o período da Copa do Mundo sem ser preso, ressalvadas as hipóteses constitucionais, expedindo o competente salvo conduto;",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("d)     NO MÉRITO a concessão da ordem para assegurar ao impetrante o direito de participar das manifestações que ocorrerem durante o período da Copa do Mundo sem ser preso, ressalvadas as hipóteses constitucionais, bem como para confirmar as liminares concedidas, expedindo o competente salvo conduto;",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("e)     A CONCESSÃO DE EFEITO EXTENSIVO, no caso de concessão, à ordem de habeas corpus e ao pedido de liminar para, nos termos do art. 580 do Código de Processo Penal, estender os efeitos da ordem à todos os manifestantes do Estado de "+estado+" que estiverem nas mesmas condições. ",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("Nestes termos,",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      phrase.add(new Chunk("Pede deferimento.",text));
+		      par = new Paragraph(phrase);
+		      par.setAlignment(Element.ALIGN_JUSTIFIED);
+		      doc.add(par);
+		      phrase =new Phrase();
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(" "));
+		      doc.add(new Paragraph(cidade+", "+dia + " " + mes + " " + ano, text));
+		      doc.add(new Paragraph("__________________________________",text));
+		      doc.add(new Paragraph(nome,text));
+		      doc.close();
+		      
+		} catch (Exception e) {
+			Toast toast = Toast.makeText(getApplicationContext(),e.toString(), 10);
+			toast.show(); 
+		}
+		
+		(new FileCreatedFragment(f)).show(null,null);
+		
+		finish();
+		
+		
+	}
+	
+	public class FileCreatedFragment extends DialogFragment {
+	    
+		private String path;
+		public FileCreatedFragment(String path){
+			super();
+			this.path = path;
+		}
+		
+		@Override
+	    public Dialog onCreateDialog(Bundle savedInstanceState) {
+	        // Use the Builder class for convenient dialog construction
+	        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+	        builder.setMessage("Arquivo salvo com sucesso na memoria interna do telefone na pasta ProtestoLivre!").setPositiveButton("Abrir", new DialogInterface.OnClickListener() {
+	                   public void onClick(DialogInterface dialog, int id) {
+	                	   Intent intent = new Intent();
+	                	   intent.setAction(android.content.Intent.ACTION_VIEW);
+	                	   File file = new File(path);
+	                	   intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+	                	   startActivity(intent); 
+	                   }
+	               }).setNegativeButton("Voltar", new DialogInterface.OnClickListener() {
+	                   public void onClick(DialogInterface dialog, int id) {
+	                       // User cancelled the dialog
+	                   }
+	               });
+	        // Create the AlertDialog object and return it
+	        return builder.create();
+	    }
+	}
+	
+	/**
+	 * A placeholder fragment containing a simple view.
+	 */
+	public static class PlaceholderFragment extends Fragment {
+
+		public PlaceholderFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_tela05,
+					container, false);
+			return rootView;
+		}
+	}
+
+}

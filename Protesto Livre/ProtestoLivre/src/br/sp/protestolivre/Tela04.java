@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import android.os.Build;
 
 public class Tela04 extends ActionBarActivity {
@@ -25,9 +26,14 @@ public class Tela04 extends ActionBarActivity {
 		}
 	}
 	
-	public void onClick(View arg0) {
+	public void Preventivo(View arg0) {
 		Intent Tela05 = new Intent(getApplicationContext(), Tela05.class);
 		startActivity(Tela05);
+	}
+	
+	public void Liberatorio(View arg0) {
+		Toast toast = Toast.makeText(getApplicationContext(), "Em breve", Toast.LENGTH_SHORT);
+		toast.show();
 	}
 	
 	@Override
