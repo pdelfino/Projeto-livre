@@ -16,7 +16,6 @@ do a preventive _Habeas Corpus_ automatically through a Facebook extension?
 That would be more efficient. It would protect more people and it would be legal.
 That's what we did!
 
- [//]: <> ![alt text](https://scontent.fplu9-1.fna.fbcdn.net/v/t1.0-9/10312547_1449967061928160_90987294146249988_n.png?oh=ca7a5346306a34d39413632d343ea16a&oe=5B0CC0E8)
 
 Demo
 ===
