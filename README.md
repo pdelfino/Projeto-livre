@@ -47,8 +47,8 @@ I think this was a good idea. But it lost the right _timing_.
 Authorship
 ===
 
-Despite having the idea of the project, I am not the responsible for writting 
-this code. By that time, I was just a hobbyist and knew very little about programming.
+**Despite having the idea of the project, I am not the responsible for writting 
+this code.** By that time, I was just a hobbyist and knew very little about programming.
 
 However, I was the leader of the  team responsible for building this project.
 The team had people with design, programming and law skills.
