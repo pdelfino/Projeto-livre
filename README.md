@@ -52,7 +52,7 @@ Despite having the idea of the project, I am not the responsible for writting
 this code. By that time, I was just a hobbyist and knew very little about programming.
 
 However, I was the leader of the  team responsible for building this project.
-The team had people with desing, programming and law skills.
+The team had people with design, programming and law skills.
 I was responsible for submiting the code for the contest
 _Vai Mudar na Copa_ via Github. The code remained here.
 
