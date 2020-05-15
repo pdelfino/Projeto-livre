@@ -2,7 +2,7 @@ Idea
 ===
 
 In 2013, many protests occured in Brazil. These events are known as
- _2013 Confederations Cup riots_, _Brazilian Sprint_ and _June Journeys_.
+ _2013 Confederations Cup riots_, _Brazilian Sprint_ or _June Journeys_.
 
  ![alt text](https://upload.wikimedia.org/wikipedia/commons/4/4b/Protesto_no_Congresso_Nacional_do_Brasil%2C_17_de_junho_de_2013.jpg)
  
