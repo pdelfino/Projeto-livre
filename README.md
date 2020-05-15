@@ -8,10 +8,10 @@ In 2013, many protests occured in Brazil. These events are known as
  
 
 During this period, many protestants were being illegaly arrested. Some popular attorneys
-were doing preventive _Habeas Corpus_ manually on the streets.
+were doing preventive _Habeas Corpus_ manually with forms, pen and paper on the streets.
 
-That's when I had a sudden insight. What if people could automatically
-do a preventive _Habeas Corpus_ automatically through a Facebook extension?
+That's when I had an insight. What if people could automatically
+make a preventive _Habeas Corpus_ automatically through a Facebook extension?
 
 That would be more efficient. It would protect more people and it would be legal.
 That's what we did!
@@ -50,17 +50,16 @@ Authorship
 **Despite having the idea of the project, I am not the responsible for writting 
 this code.** By that time, I was just a hobbyist and knew very little about programming.
 
-However, I was the leader of the  team responsible for building this project.
-The team had people with design, programming and law skills.
+However, I was the leader of the  team responsible for building this project. Something like the Project Manager or Product Owner. The team had people with design, programming and legal skills.
 I was responsible for submiting the code for the contest
-_Vai Mudar na Copa_ via Github. The code remained here.
+_Vai Mudar na Copa_ via Github. Hence, the code remained here.
 
-The main author of this code was Thiago Cavalcante. His email is: ```thicosc at gmail dot com```.
+The main author of this code is Thiago Cavalcante. His email is: ```thicosc at gmail dot com```.
 
- Ítalo Ferreira dos Santos was
+Ítalo Ferreira dos Santos was
 resposible for the design, his email is ```oi at italoferreira dot com dot br``` 
 
-The other members contributed to the legal aspects: 
+The other members contributed to the legal aspects of the project: 
 
 + Fernanda Almeida Fernandes de Oliveira ```fernandaafoliveira at gmail dot com```
 + Ricardo Carrion ```rcarrionalves at gmail dot com```; and,
