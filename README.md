@@ -70,5 +70,5 @@ Requirements
 ===
 
 To run this code you need at least Android 2.2.
-Is is also necessary to allow installs from unkown fonts.
+It is also necessary to allow installs from unkown fonts.
 
